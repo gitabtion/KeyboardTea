@@ -1,13 +1,41 @@
 package cn.abtion.keyboardtea;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import android.content.Intent;
+
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import cn.abtion.keyboardtea.base.activity.BaseActivity;
+import cn.abtion.keyboardtea.main.activity.TextViewActivity;
+
+public class MainActivity extends BaseActivity {
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected void initWidget() {
+
+    }
+
+    @Override
+    protected void initData() {
+
+    }
+
+    @Override
+    protected void initWindows() {
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_main;
+    }
+
+
+
+    @OnClick(R.id.text_view)
+    public void onViewClicked() {
+        Intent intent = new Intent();
+        intent.setClass(this, TextViewActivity.class);
+        startActivity(intent);
     }
 }
