@@ -23,6 +23,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initWindows() {
+        ButterKnife.bind(this);
     }
 
     @Override
