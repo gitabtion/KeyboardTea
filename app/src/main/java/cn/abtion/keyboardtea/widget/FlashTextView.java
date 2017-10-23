@@ -9,9 +9,7 @@ import android.graphics.Paint;
 import android.graphics.Shader;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.widget.TextView;
 
-import java.security.spec.MGF1ParameterSpec;
 
 /**
  * @author abtion.
@@ -19,7 +17,7 @@ import java.security.spec.MGF1ParameterSpec;
  * email caiheng@hrsoft.net
  */
 
-public class FlashTextView extends TextView {
+public class FlashTextView extends android.support.v7.widget.AppCompatTextView {
     private int mViewWidth;
     private Paint mPaint;
     private LinearGradient mLinearGradient;

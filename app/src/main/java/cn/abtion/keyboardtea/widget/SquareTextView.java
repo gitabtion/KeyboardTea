@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.widget.TextView;
 
 /**
  * @author abtion.
@@ -14,7 +13,7 @@ import android.widget.TextView;
  * email caiheng@hrsoft.net
  */
 
-public class SquareTextView extends TextView {
+public class SquareTextView extends android.support.v7.widget.AppCompatTextView {
 
     private Paint mPaint1,mPaint2;
 
