@@ -1,16 +1,16 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="BaseAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme" parent="@style/BaseAppTheme"/>
     <!--toolbar style-->
     <style name="toolbar" parent="@style/ThemeOverlay.AppCompat.ActionBar">
-        <item name="android:paddingTop">25dp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:minHeight">?attr/actionBarSize</item>
@@ -18,5 +18,32 @@
         <item name="titleTextColor">@color/white</item>
         <item name="android:textSize">@dimen/bar_text</item>
         <item name="android:textColorPrimary">@color/white</item>
+    </style>
+
+    <!--底部tab 样式-->
+    <style name="tab_menu_item">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">#212121</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <!--内容边距 样式-->
+    <style name="content_padding">
+        <item name="android:paddingLeft">@dimen/padding_left_right</item>
+        <item name="android:paddingRight">@dimen/padding_left_right</item>
+        <item name="android:paddingTop">8dp</item>
+    </style>
+
+    <!--按钮样式-->
+    <style name="btn">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/bg_btn_full</item>
+        <item name="android:layout_height">@dimen/btn_height</item>
+
     </style>
 </resources>

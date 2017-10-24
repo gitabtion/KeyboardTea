@@ -11,6 +11,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
+import com.hyphenate.exceptions.HyphenateException;
+
 import butterknife.ButterKnife;
 import cn.abtion.keyboardtea.base.fragment.BaseFragment;
 import cn.abtion.keyboardtea.util.Utility;
@@ -36,7 +38,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * 页面初始化操作.
      */
-    protected void init() {
+    protected void init(){
         ButterKnife.bind(this);
         preInit();
         initVariable();

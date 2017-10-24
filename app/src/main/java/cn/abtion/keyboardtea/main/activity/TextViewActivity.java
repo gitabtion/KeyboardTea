@@ -2,6 +2,7 @@ package cn.abtion.keyboardtea.main.activity;
 
 import cn.abtion.keyboardtea.R;
 import cn.abtion.keyboardtea.base.activity.BaseActivity;
+import cn.abtion.keyboardtea.base.activity.BaseToolBarActivity;
 
 /**
  * @author abtion.
@@ -9,24 +10,26 @@ import cn.abtion.keyboardtea.base.activity.BaseActivity;
  * email caiheng@hrsoft.net
  */
 
-public class TextViewActivity extends BaseActivity {
-    @Override
-    protected void initWidget() {
+public class TextViewActivity extends BaseToolBarActivity {
 
-    }
-
-    @Override
-    protected void initData() {
-
-    }
-
-    @Override
-    protected void initWindows() {
-
-    }
 
     @Override
     protected int getLayoutId() {
         return R.layout.activity_textview;
+    }
+
+    @Override
+    protected void initVariable() {
+
+    }
+
+    @Override
+    protected void initView() {
+
+    }
+
+    @Override
+    protected void loadData() {
+
     }
 }

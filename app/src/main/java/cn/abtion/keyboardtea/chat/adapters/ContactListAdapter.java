@@ -4,12 +4,13 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.List;
 
+import butterknife.BindView;
 import cn.abtion.keyboardtea.R;
 import cn.abtion.keyboardtea.base.adapter.BaseRecyclerViewAdapter;
-import cn.abtion.keyboardtea.chat.models.UserModel;
 
 /**
  * @author abtion.
@@ -17,25 +18,32 @@ import cn.abtion.keyboardtea.chat.models.UserModel;
  * email caiheng@hrsoft.net.
  */
 
-public class ContactListAdapter extends BaseRecyclerViewAdapter<UserModel> {
-    public ContactListAdapter(Context context, List<UserModel> userModels) {
-        super(context, userModels);
+public class ContactListAdapter extends BaseRecyclerViewAdapter<String> {
+
+
+    public ContactListAdapter(Context context, List<String> strings) {
+        super(context, strings);
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.item_contact,parent,false);
-        return null;
+        View view = inflater.inflate(R.layout.item_contact, parent, false);
+        return new ItemHolder(view);
     }
 
-    static class ItemHolder extends ViewHolder<UserModel> {
+    static class ItemHolder extends ViewHolder<String> {
+        @BindView(R.id.txt_user_id)
+        TextView txtUserId;
+
         public ItemHolder(View itemView) {
             super(itemView);
         }
 
         @Override
-        protected void onBind(UserModel userModel) {
-
+        protected void onBind(String s) {
+            txtUserId.setText(s);
         }
+
+
     }
 }
