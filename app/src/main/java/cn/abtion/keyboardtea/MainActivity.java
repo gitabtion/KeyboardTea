@@ -49,6 +49,6 @@ public class MainActivity extends BaseToolBarActivity {
 
     @OnClick(R.id.btn_chat)
     public void onChatBtnClicked(){
-        startActivity(new Intent(this, ContactListActivity.class));
+        startActivity(new Intent(this, LoginActivity.class));
     }
 }

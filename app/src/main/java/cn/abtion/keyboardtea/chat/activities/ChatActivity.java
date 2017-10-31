@@ -11,7 +11,6 @@ import com.hyphenate.chat.EMMessage;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.abtion.keyboardtea.R;
 import cn.abtion.keyboardtea.base.activity.BaseToolBarActivity;
@@ -38,12 +37,13 @@ public class ChatActivity extends BaseToolBarActivity implements EMMessageListen
 
     @Override
     protected void initVariable() {
-
+        Bundle bundle = getIntent().getExtras();
+        chatId = bundle.getString(ContactListActivity.USER_ID);
     }
 
     @Override
     protected void initView() {
-
+        setActivityTitle("聊天");
     }
 
     @Override

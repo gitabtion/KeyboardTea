@@ -1,13 +1,11 @@
 package cn.abtion.keyboardtea.chat.activities;
 
-import android.os.Bundle;
 import android.widget.EditText;
 
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.exceptions.HyphenateException;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.abtion.keyboardtea.R;
 import cn.abtion.keyboardtea.base.activity.BaseToolBarActivity;
@@ -37,7 +35,7 @@ public class AddContactActivity extends BaseToolBarActivity {
 
     @Override
     protected void initView() {
-
+        setActivityTitle("添加联系人");
     }
 
     @Override

@@ -67,6 +67,7 @@
         <activity android:name=".chat.activities.ContactListActivity"/>
         <activity android:name=".chat.activities.LoginActivity"/>
         <activity android:name=".chat.activities.AddContactActivity"/>
+        <activity android:name=".chat.activities.ChatActivity"/>
     </application>
 
 </manifest>
