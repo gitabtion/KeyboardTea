@@ -6,11 +6,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.hyphenate.chat.EMClient;
+import com.hyphenate.chat.EMConversation;
+
 import java.util.List;
 
 import butterknife.BindView;
 import cn.abtion.keyboardtea.R;
 import cn.abtion.keyboardtea.base.adapter.BaseRecyclerViewAdapter;
+import cn.abtion.keyboardtea.util.Utility;
 
 /**
  * @author abtion.
@@ -19,6 +23,8 @@ import cn.abtion.keyboardtea.base.adapter.BaseRecyclerViewAdapter;
  */
 
 public class ContactListAdapter extends BaseRecyclerViewAdapter<String> {
+
+
 
 
     public ContactListAdapter(Context context, List<String> strings) {
@@ -31,9 +37,13 @@ public class ContactListAdapter extends BaseRecyclerViewAdapter<String> {
         return new ItemHolder(view);
     }
 
-    static class ItemHolder extends ViewHolder<String> {
+    class ItemHolder extends ViewHolder<String> {
+        @BindView(R.id.txt_unread_count)
+        TextView txtUnreadCount;
         @BindView(R.id.txt_user_id)
         TextView txtUserId;
+        EMConversation conversation;
+        String userId;
 
         public ItemHolder(View itemView) {
             super(itemView);
@@ -42,6 +52,27 @@ public class ContactListAdapter extends BaseRecyclerViewAdapter<String> {
         @Override
         protected void onBind(String s) {
             txtUserId.setText(s);
+            userId =s;
+//            Utility.runOnNewThread(new Runnable() {
+//                @Override
+//                public void run() {
+//                    conversation = EMClient.getInstance().chatManager().getConversation(userId, EMConversation
+//                            .EMConversationType.Chat,true);
+//                    Utility.runOnUiThread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            int unreadCount = conversation.getUnreadMsgCount();
+//                            if (unreadCount==0){
+//                                txtUnreadCount.setVisibility(View.GONE);
+//                            }else if (unreadCount>99){
+//                                txtUnreadCount.setText("99+");
+//                            }else {
+//                                txtUnreadCount.setText(unreadCount);
+//                            }
+//                        }
+//                    });
+//                }
+//            });
         }
 
 

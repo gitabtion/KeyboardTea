@@ -69,8 +69,8 @@ public class ChatActivity extends BaseToolBarActivity implements EMMessageListen
                         if (messages != null) {
                             for (EMMessage message : messages) {
                                 EMTextMessageBody textMessageBody = (EMTextMessageBody) message.getBody();
-                                txtChatContent.setText(txtChatContent.getText() + "\n\n" + message.getUserName()
-                                        + "\n" + textMessageBody.getMessage());
+                                txtChatContent.setText(txtChatContent.getText() + "\n" + message.getUserName()
+                                        + "\n" + textMessageBody.getMessage() + "\n");
                             }
                         }
                     }
@@ -82,9 +82,9 @@ public class ChatActivity extends BaseToolBarActivity implements EMMessageListen
 
     @OnClick(R.id.btn_send)
     public void onViewClicked() {
-        txtChatContent.setText(txtChatContent.getText() + "\n\n" + currentUser + "\n" +
+        txtChatContent.setText(txtChatContent.getText() + "\n" + currentUser + "\n" +
                 editChatContent.getText
-                        ());
+                        () + "\n");
         Utility.runOnNewThread(new Runnable() {
             @Override
             public void run() {
@@ -103,8 +103,8 @@ public class ChatActivity extends BaseToolBarActivity implements EMMessageListen
             public void run() {
                 for (EMMessage message : messages) {
                     EMTextMessageBody textMessageBody = (EMTextMessageBody) message.getBody();
-                    txtChatContent.setText(txtChatContent.getText() + "\n\n" + message.getUserName()
-                            + "\n" + textMessageBody.getMessage());
+                    txtChatContent.setText(txtChatContent.getText() + "\n" + message.getUserName()
+                            + "\n" + textMessageBody.getMessage() + "\n");
                 }
             }
         });

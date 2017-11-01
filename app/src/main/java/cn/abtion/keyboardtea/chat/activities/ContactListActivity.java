@@ -37,6 +37,7 @@ public class ContactListActivity extends BaseToolBarActivity implements BaseRecy
     private List<String> userNames;
     private ContactListAdapter adapter;
     public static String USER_ID = "USER_ID";
+    private String chatId;
 
     @BindView(R.id.rec_contact)
     RecyclerView recContact;
