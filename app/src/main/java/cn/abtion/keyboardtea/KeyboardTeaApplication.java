@@ -51,7 +51,6 @@ public class KeyboardTeaApplication extends Application {
             return;
         }
         EMOptions options = new EMOptions();
-        options.setAutoLogin(true);
         options.setAutoLogin(false);
         EMClient.getInstance().init(appContext, options);
         EMClient.getInstance().setDebugMode(DEBUG);

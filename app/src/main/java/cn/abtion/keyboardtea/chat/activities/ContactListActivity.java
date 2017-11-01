@@ -11,7 +11,6 @@ import android.view.MenuItem;
 
 import com.hyphenate.EMCallBack;
 import com.hyphenate.chat.EMClient;
-import com.hyphenate.chat.EMMessage;
 import com.hyphenate.exceptions.HyphenateException;
 
 import java.util.ArrayList;
@@ -59,12 +58,28 @@ public class ContactListActivity extends BaseToolBarActivity implements BaseRecy
         setActivityTitle("联系人");
         initToolbar();
         initSwipe();
+        Utility.runOnNewThread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    userNames = EMClient.getInstance().contactManager().getAllContactsFromServer();
+                } catch (HyphenateException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
-                swipeContactList.setRefreshing(false);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        swipeContactList.setRefreshing(false);
+                        adapter.setData(userNames);
+                    }
+                });
             }
-        },1000);
+        },2000);
 
     }
 
@@ -101,20 +116,20 @@ public class ContactListActivity extends BaseToolBarActivity implements BaseRecy
                         } catch (HyphenateException e) {
                             e.printStackTrace();
                         }
-                        new Timer().schedule(new TimerTask() {
+                    }
+                });
+                new Timer().schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
                                 swipeContactList.setRefreshing(false);
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        adapter.setData(userNames);
-                                    }
-                                });
+                                adapter.setData(userNames);
                             }
-                        },1000);
+                        });
                     }
-                });
+                },2000);
             }
         });
     }

@@ -6,7 +6,9 @@ import android.widget.TextView;
 
 import com.hyphenate.EMMessageListener;
 import com.hyphenate.chat.EMClient;
+import com.hyphenate.chat.EMConversation;
 import com.hyphenate.chat.EMMessage;
+import com.hyphenate.chat.EMTextMessageBody;
 
 import java.util.List;
 
@@ -22,9 +24,12 @@ import cn.abtion.keyboardtea.util.Utility;
  * email caiheng@hrsoft.net.
  */
 
-public class ChatActivity extends BaseToolBarActivity implements EMMessageListener{
+public class ChatActivity extends BaseToolBarActivity implements EMMessageListener {
     private String chatId;
-    EMMessage emMessage;
+    private EMMessage emMessage;
+    private List<EMMessage> messages;
+    private EMConversation conversation;
+    private String currentUser;
     @BindView(R.id.txt_chat_content)
     TextView txtChatContent;
     @BindView(R.id.edit_chat_content)
@@ -39,6 +44,8 @@ public class ChatActivity extends BaseToolBarActivity implements EMMessageListen
     protected void initVariable() {
         Bundle bundle = getIntent().getExtras();
         chatId = bundle.getString(ContactListActivity.USER_ID);
+        EMClient.getInstance().chatManager().addMessageListener(this);
+        currentUser = EMClient.getInstance().getCurrentUser();
     }
 
     @Override
@@ -48,18 +55,41 @@ public class ChatActivity extends BaseToolBarActivity implements EMMessageListen
 
     @Override
     protected void loadData() {
-
+        Utility.runOnNewThread(new Runnable() {
+            @Override
+            public void run() {
+                conversation = EMClient.getInstance().chatManager().getConversation(chatId,
+                        EMConversation.EMConversationType.Chat, true);
+                if (conversation != null) {
+                    messages = conversation.getAllMessages();
+                }
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (messages != null) {
+                            for (EMMessage message : messages) {
+                                EMTextMessageBody textMessageBody = (EMTextMessageBody) message.getBody();
+                                txtChatContent.setText(txtChatContent.getText() + "\n\n" + message.getUserName()
+                                        + "\n" + textMessageBody.getMessage());
+                            }
+                        }
+                    }
+                });
+            }
+        });
     }
 
 
     @OnClick(R.id.btn_send)
     public void onViewClicked() {
-        txtChatContent.setText(txtChatContent.getText() + "\n"+ editChatContent.getText());
+        txtChatContent.setText(txtChatContent.getText() + "\n\n" + currentUser + "\n" +
+                editChatContent.getText
+                        ());
         Utility.runOnNewThread(new Runnable() {
             @Override
             public void run() {
                 emMessage = EMMessage.createTxtSendMessage(editChatContent
-                        .getText().toString(),chatId);
+                        .getText().toString(), chatId);
                 EMClient.getInstance().chatManager().sendMessage(emMessage);
 
             }
@@ -71,8 +101,10 @@ public class ChatActivity extends BaseToolBarActivity implements EMMessageListen
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                for (EMMessage message:messages){
-                    txtChatContent.setText(txtChatContent.getText()+"\n"+message);
+                for (EMMessage message : messages) {
+                    EMTextMessageBody textMessageBody = (EMTextMessageBody) message.getBody();
+                    txtChatContent.setText(txtChatContent.getText() + "\n\n" + message.getUserName()
+                            + "\n" + textMessageBody.getMessage());
                 }
             }
         });
