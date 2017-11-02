@@ -217,7 +217,7 @@ public abstract class BaseRecyclerViewAdapter<Data> extends RecyclerView.Adapter
 
         }
 
-        void bind(Data data) {
+        public void bind(Data data) {
             mData = data;
             onBind(data);
         }

@@ -4,19 +4,13 @@
                                                  android:layout_height="match_parent"
                                                  android:orientation="vertical">
 
-    <android.support.v4.widget.NestedScrollView
-        android:layout_above="@+id/ly_input_bar"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rec_chat"
+        android:paddingBottom="16dp"
         android:layout_alignParentTop="true"
+        android:layout_marginBottom="56dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:paddingBottom="16dp"
-            android:id="@+id/txt_chat_content"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/padding_left_right"/>
-    </android.support.v4.widget.NestedScrollView>
+        android:layout_height="match_parent"/>
 
     <LinearLayout
         android:id="@+id/ly_input_bar"
