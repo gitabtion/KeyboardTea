@@ -6,5 +6,6 @@
 
     <color name="white">#FFFFFF</color>
     <color name="divider">#DEDEDE</color>
+    <color name="bg_chat">#EFEFEF</color>
 
 </resources>

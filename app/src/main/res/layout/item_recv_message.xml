@@ -5,15 +5,18 @@
               android:layout_height="wrap_content">
 
     <TextView
+        android:textColor="@color/white"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_chat_message_received"
         android:layout_marginEnd="56dp"
-        android:gravity="center_vertical"
+        android:gravity="center|start"
         android:id="@+id/txt_message"
-        android:padding="@dimen/padding_left_right"
-        android:layout_width="match_parent"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:paddingEnd="8dp"
+        android:paddingStart="16dp"
+        android:lineSpacingExtra="2dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
-    <View
-        android:background="@color/divider"
-        android:layout_width="match_parent"
-        android:layout_height="1px"/>
 </LinearLayout>

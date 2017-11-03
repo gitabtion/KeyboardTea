@@ -17,6 +17,7 @@ import butterknife.OnClick;
 import cn.abtion.keyboardtea.R;
 import cn.abtion.keyboardtea.base.activity.BaseToolBarActivity;
 import cn.abtion.keyboardtea.chat.adapters.MessageAdapter;
+import cn.abtion.keyboardtea.util.Utility;
 
 /**
  * @author abtion.
@@ -101,5 +102,16 @@ public class ChatActivity extends BaseToolBarActivity implements EMMessageListen
         if (adapter!=null){
             adapter.refresh();
         }
+        scrollToBottom();
     }
+    private void scrollToBottom() {
+        Utility.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                recChat.scrollToPosition(adapter.getItemCount() - 1);
+            }
+        }, 200);
+    }
+
+
 }
