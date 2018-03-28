@@ -6,6 +6,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -155,9 +156,10 @@ public class ContactListActivity extends BaseToolBarActivity implements BaseRecy
                         emcLogout();
                         break;
                     case R.id.action_add_friend:
-                        // TODO: 17/10/31 addFriend;
+                        startActivity(new Intent(ContactListActivity.this,AddContactActivity.class));
                         break;
                     default:
+                        Log.e("error:","there is no choice");
                 }
                 return true;
             }
@@ -191,5 +193,10 @@ public class ContactListActivity extends BaseToolBarActivity implements BaseRecy
         bundle.putString(USER_ID,s);
         intent.putExtras(bundle);
         startActivity(intent);
+    }
+
+    @Override
+    protected void onBackBtnOnclick() {
+        super.onBackBtnOnclick();
     }
 }

@@ -3,6 +3,8 @@ package cn.abtion.keyboardtea;
 
 import android.content.Intent;
 
+import com.hyphenate.chat.EMClient;
+
 import butterknife.OnClick;
 import cn.abtion.keyboardtea.base.activity.BaseToolBarActivity;
 import cn.abtion.keyboardtea.chat.activities.ContactListActivity;
@@ -16,7 +18,6 @@ import cn.abtion.keyboardtea.main.activity.TextViewActivity;
  * email caiheng@hrsoft.net.
  */
 public class MainActivity extends BaseToolBarActivity {
-
 
 
     @Override
@@ -48,7 +49,11 @@ public class MainActivity extends BaseToolBarActivity {
     }
 
     @OnClick(R.id.btn_chat)
-    public void onChatBtnClicked(){
-        startActivity(new Intent(this, LoginActivity.class));
+    public void onChatBtnClicked() {
+        if (EMClient.getInstance().isLoggedInBefore()) {
+            startActivity(new Intent(MainActivity.this, ContactListActivity.class));
+        } else {
+            startActivity(new Intent(this, LoginActivity.class));
+        }
     }
 }

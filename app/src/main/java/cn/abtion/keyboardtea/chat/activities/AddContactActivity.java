@@ -2,6 +2,7 @@ package cn.abtion.keyboardtea.chat.activities;
 
 import android.widget.EditText;
 
+import com.hyphenate.EMCallBack;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.exceptions.HyphenateException;
 
@@ -49,9 +50,12 @@ public class AddContactActivity extends BaseToolBarActivity {
         userId = editId.getText().toString().trim();
         try {
             EMClient.getInstance().contactManager().addContact(userId,"123");
+            ToastUtil.showToast(R.string.request_sended);
+            AddContactActivity.this.finish();
         } catch (HyphenateException e) {
             e.printStackTrace();
-            ToastUtil.showToast(e.toString());
+            ToastUtil.showToast(R.string.request_add_buddy_failure+e.getMessage());
         }
+
     }
 }

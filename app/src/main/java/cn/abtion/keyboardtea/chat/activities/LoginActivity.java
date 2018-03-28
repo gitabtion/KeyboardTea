@@ -64,6 +64,7 @@ public class LoginActivity extends BaseToolBarActivity {
                         startActivity(new Intent(LoginActivity.this,ContactListActivity.class));
                     }
                 });
+                LoginActivity.this.finish();
             }
 
             @Override
@@ -88,14 +89,14 @@ public class LoginActivity extends BaseToolBarActivity {
             public void run() {
                 try {
                     EMClient.getInstance().createAccount(userId, userPassword);
+                    ToastUtil.showToast("注册成功！");
                 } catch (HyphenateException e) {
                     e.printStackTrace();
-                    ToastUtil.showToast(e.toString());
+                    ToastUtil.showToast(e.getMessage());
 
                 }
             }
         });
-        Snackbar.make(getWindow().getDecorView(), "注册成功", Snackbar.LENGTH_SHORT);
     }
 
     @OnClick(R.id.btn_login)
