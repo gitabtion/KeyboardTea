@@ -102,7 +102,6 @@ public class ContactListActivity extends BaseToolBarActivity implements BaseRecy
         adapter.setOnItemClickedListener(this);
         recContact.setAdapter(adapter);
         recContact.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
-
     }
 
     private void initSwipe(){

@@ -2,4 +2,6 @@
     <string name="app_name">KeyboardTea</string>
     <string name="request_sended">请求已发送</string>
     <string name="request_add_buddy_failure">请求发送失败</string>
+    <string name="drawer_open">打开菜单</string>
+    <string name="drawer_close">关闭菜单</string>
 </resources>
